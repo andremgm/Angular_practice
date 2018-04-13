@@ -1,0 +1,25 @@
+<button (click)="onCreateNewServer()" class="btn btn-primary" [disabled]="!allowNewServer">
+	<!--en angular para hacer property binding, se ponen [] -->New Server!</button>
+{{ newServer }}
+
+
+<!-- <input type="text" class="form-control" (input)="onUpdateServerName($event)"> -->
+
+<!--diferencia entre ngModel e input, 
+input no puedes prellenar con texto,UNICA diferencia		-->
+<input type="text" class="form-control" [(ngModel)]="newText">
+
+<p *ngIf="!showText; else marker">esta cosa solo aparece en true {{newText}}</p>
+<ng-template #marker>
+	<p>no server was created else marker </p>
+</ng-template>
+
+<button (click)="resetText()" class="btn btn-default btn-danger" [disabled]="!emptyOrNot()"> reset text!</button>
+
+
+<p  [ngStyle]= "{backgroundColor: getColor()}" [ngClass]="{texto: serverStatus === 'online', textin: serverStatus ==='offline' }">{{getServerStatus()}}</p>
+
+
+<app-server *ngFor="let server of servers" > </app-server>
+
+
